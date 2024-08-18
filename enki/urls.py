@@ -17,11 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from enki.views import sobrenosotros
-from enki.views import alinchackras
+from enki.views import alinchackras, primer_template
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('sobrenosotros/', sobrenosotros),
     path('aliniacion_Chackras/', alinchackras),
+    path('plantilla/', primer_template),
 
 ]
