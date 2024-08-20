@@ -18,11 +18,15 @@ from django.contrib import admin
 from django.urls import path
 from enki.views import sobrenosotros
 from enki.views import alinchackras, primer_template
+from enki.views import agregar_terapia, agregar_usuario, agregar_motivo
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('sobrenosotros/', sobrenosotros),
     path('aliniacion_Chackras/', alinchackras),
     path('plantilla/', primer_template),
+    path('terapia/<terap>/', agregar_terapia),
+    path('usuario/<nom>/<fech_nac>/<cel>/<corr>', agregar_usuario),
+    path('motivo/<motiv>/', agregar_motivo),
 
 ]
