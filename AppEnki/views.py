@@ -1,3 +1,16 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
-# Create your views here.
+def inicio (request):
+    return render(request, 'appenki/inicio.html')
+
+def terapias(request):
+    return render(request, 'appenki/terapias.html')
+
+def usuarios(request):
+    return render(request, 'appenki/usuarios.html')
+
+def motivos(request):
+    return render(request, 'appenki/motivos.html')
+
+

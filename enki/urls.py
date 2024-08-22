@@ -15,13 +15,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from enki.views import sobrenosotros
 from enki.views import alinchackras, primer_template
 from enki.views import agregar_terapia, agregar_usuario, agregar_motivo
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('AppEnki/', include('AppEnki.urls')),
     path('sobrenosotros/', sobrenosotros),
     path('aliniacion_Chackras/', alinchackras),
     path('plantilla/', primer_template),
