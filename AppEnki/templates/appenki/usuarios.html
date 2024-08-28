@@ -13,7 +13,13 @@
 
     {% block editable %}
     
-        <!--acá van comentarios -->
+    <form action="" method="Post">
+        {% csrf_token %}
+            {{miformulario.as_table}}
+        
+        <input type="submit" value="Enviar">
+    
+    </form>
 
     {% endblock %}
 

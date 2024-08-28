@@ -29,6 +29,35 @@ def terapias_formulario(request):
         
     return render(request, "AppEnki/terapias_formulario.html", {"miformulario": miformulario})
 
+def usuarios_formulario(request):
+    if request.method == 'POST':
+        miformulario = FormularioUsuarios(request.POST)
+        print(miformulario)
+        if miformulario.is_valid:
+            informacion = miformulario.cleaned_data
+            datos = Registro_usuario(nombre_completo=informacion["nombre_completo"], fecha_nacimiento=informacion["fecha_nacimiento"], celular=informacion["celular"], correo=informacion["correo"])
+            datos.save()
+            return render(request, "AppEnki/padre.html")
+    else:
+        miformulario = FormularioUsuarios()
+        
+    return render(request, "AppEnki/usuarios.html", {"miformulario": miformulario})
+
+def motivo_formulario(request):
+    if request.method == 'POST':
+        miformulario = FormularioMotivo(request.POST)
+        print(miformulario)
+        if miformulario.is_valid:
+            informacion = miformulario.cleaned_data
+            motiv = motivo_terapia(detalle_usuario=informacion["detalle_usuario"])
+            motiv.save()
+            return render(request, "AppEnki/padre.html")
+    else:
+        miformulario = FormularioMotivo()
+        
+    return render(request, "AppEnki/motivo.html", {"miformulario": miformulario})
+
+
     
 
 
