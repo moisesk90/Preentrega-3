@@ -41,7 +41,7 @@ def usuarios_formulario(request):
     else:
         miformulario = FormularioUsuarios()
         
-    return render(request, "AppEnki/usuarios.html", {"miformulario": miformulario})
+    return render(request, "AppEnki/usuario_formulario.html", {"miformulario": miformulario})
 
 def motivo_formulario(request):
     if request.method == 'POST':
@@ -55,7 +55,7 @@ def motivo_formulario(request):
     else:
         miformulario = FormularioMotivo()
         
-    return render(request, "AppEnki/motivo.html", {"miformulario": miformulario})
+    return render(request, "AppEnki/motivo_formulario.html", {"miformulario": miformulario})
 
 
     
