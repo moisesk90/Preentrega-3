@@ -58,6 +58,13 @@ def motivo_formulario(request):
     return render(request, "AppEnki/motivo_formulario.html", {"miformulario": miformulario})
 
 
-    
-
+def buscar(request):
+    if request.method == 'POST':
+        busqueda = request.POST['buscar']
+        resultados_terapias = Terapias.objects.filter(tipo_terapia__icontains=busqueda)
+        resultados_usuarios = Registro_usuario.objects.filter(nombre_completo__icontains=busqueda) | Registro_usuario.objects.filter(fecha_nacimiento__icontains=busqueda) | Registro_usuario.objects.filter(celular__icontains=busqueda) | Registro_usuario.objects.filter(correo__icontains=busqueda)
+        resultados_motivos = motivo_terapia.objects.filter(detalle_usuario__icontains=busqueda)
+        return render(request, "AppEnki/buscar.html", {'resultados_terapias': resultados_terapias, 'resultados_usuarios': resultados_usuarios, 'resultados_motivos': resultados_motivos})
+    else:
+        return render(request, "AppEnki/buscar.html")
 

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario para agregar nuevas terapias</title>
+   
 </head>
 <body>
    
@@ -11,13 +12,17 @@
 
     {% load static %}
 
+
     {% block editable %}
     
     <form action="" method="Post">
         {% csrf_token %}
+
+        <table style="color:white; background-color:black">
             {{miformulario.as_table}}
         
-        <input type="submit" value="Enviar">
+            <input style="color:white; background-color:black" type="submit" value="Enviar">
+        </table>
     
     </form>
 

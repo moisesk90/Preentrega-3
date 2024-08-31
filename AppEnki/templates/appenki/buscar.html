@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultados de la búsqueda</title>
+</head>
+<body>
+    {% extends "AppEnki/padre.html" %}
+
+    {% load static %}
+
+
+    {% block editable %}
+    
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="buscar" placeholder="Buscar...">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <h2>Resultados de la búsqueda:</h2>
+    <h3>Terapias:</h3>
+    <ul>
+        {% for terapias in resultados_terapias %}
+            <li>{{ terapia.tipo_terapia }}</li>
+        {% endfor %}
+    </ul>
+
+    <h4>Usuarios:</h4>
+    <ul>
+        {% for registro_usuario in resultados_usuarios %}
+             <li>{{ registro_usuario.nombre_completo }}</li>
+        {% endfor %}
+    </ul>
+
+    <h5>Motivos de los usuarios:</h5>
+    <ul>
+        {% for motivo_terapia in resultados_motivos %}
+             <li>{{ motivo_terapia.detalle_usuario }}</li>
+         {% endfor %}
+    </ul>
+
+    {% endblock %}
+
+    </body>
+</html>
