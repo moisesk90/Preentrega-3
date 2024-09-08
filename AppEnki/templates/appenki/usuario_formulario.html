@@ -1,31 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario para agregar nuevas terapias</title>
+    <title>Formulario para registrar usuario</title>
+    <style>
+        body {
+            background-color: #222;
+            color: #f0f0f0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #333;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #ffd700;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #555;
+        }
+
+        input[type="text"], input[type="email"], input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background-color: #444;
+            color: #f0f0f0;
+        }
+
+        input[type="submit"] {
+            background-color: #ffd700;
+            color: #222;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #daa520;
+        }
+
+        /* Imagen de Buda (opcional) */
+        .buda-image {
+            display: block;
+            margin: 20px auto;
+            max-width: 200px;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
 </head>
 <body>
-   
-    {% extends "AppEnki/padre.html" %}
 
+    {% extends "AppEnki/base.html" %}
     {% load static %}
 
-    {% block editable %}
-    
-    <form action="" method="Post">
-        {% csrf_token %}
-        
-        <table style="color:white; background-color:black">
-            {{miformulario.as_table}}
-        
-            <input style="color:white; background-color:black" type="submit" value="Enviar">
-        </table>
-    
-    </form>
+    {% block edit %}
+
+    <div class="container">
+        <h1>Formulario para agregar nuevas terapias</h1> 
+
+        <img src="{% static 'AppEnki/assets/img/buda_1.jpeg' %}" alt="Imagen de Buda" class="buda-image"> 
+
+        <form action="" method="Post" enctype="multipart/form-data"> {## Asegúrate de incluir enctype si el formulario maneja archivos }
+            {% csrf_token %}
+
+            <table>
+                {{ miformulario.as_table }}
+            </table>
+
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
 
     {% endblock %}
-
 
 </body>
 </html>

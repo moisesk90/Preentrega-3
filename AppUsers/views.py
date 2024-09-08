@@ -1,13 +1,14 @@
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from .forms import UserRegisterForm, UserEditForm
 from django.contrib.auth.decorators import login_required
 from. models import Imagen
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordChangeView
+from datetime import datetime
 
 
 
@@ -26,7 +27,7 @@ def login_request(request):
             
             if user is not None:
                 login(request, user)
-                return render(request, "AppEnki/padre.html")
+                return redirect('welcome')
         
         msg_login = "Usuario o contraseña incorrectos"
         
@@ -75,3 +76,11 @@ def editar_perfil(request):
 class CambiarContrasena(LoginRequiredMixin, PasswordChangeView):
     template_name = "AppUsers/editar_pass.html"
     success_url = reverse_lazy("EditarPerfil")
+    
+    
+def welcome(request):
+    if request.user.is_authenticated:
+        nombre = request.user.first_name
+        hora_actual = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        context = {'nombre': nombre, 'hora_actual': hora_actual}
+        return render(request, 'AppEnki/welcome.html', context)

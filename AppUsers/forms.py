@@ -1,6 +1,8 @@
 from django import forms 
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
+from django.db import models
+from AppEnki.models import Registro_usuario
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
@@ -23,3 +25,5 @@ class UserEditForm(UserChangeForm):
         model = User
         fields = ['email', 'first_name', 'last_name', 'imagen']
         help_text = {k:"" for k in fields}
+        
+    

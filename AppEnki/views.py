@@ -5,6 +5,8 @@ from AppEnki.forms import FormularioTerapias, FormularioUsuarios, FormularioMoti
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
+from AppUsers.views import UserEditForm, UserRegisterForm
+
 
 def inicio (request):
     return render(request, 'appenki/padre.html')
@@ -92,3 +94,10 @@ def eliminarterapias(request, nombre_terapia):
     terapias = Terapias.objects.all()
     contexto = {"terapias": terapias}
     return render(request, "Appenki/leerterapias.html", contexto)
+
+def about(request):
+    return render(request, 'AppEnki/about.html')
+
+
+        
+    

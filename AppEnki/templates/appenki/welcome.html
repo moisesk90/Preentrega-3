@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de bienvenida</title>
+   
+</head>
+<body>
+   
+    {% extends "AppEnki/base.html" %}
+
+    {% load static %}
+
+
+    {% block edit %}
+    
+    <h1>Bienvenido!!, {{ nombre }}!</h1>
+    <p>Fecha y hora actual: {{ hora_actual }}</p>
+
+    {% endblock %}
+
+
+</body>
+</html>

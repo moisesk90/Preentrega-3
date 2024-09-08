@@ -30,20 +30,17 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="{% url 'inicio' %}">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
-                        {% if user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'terapias_formulario' %}">Terapias</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'usuarios_formulario' %}">Usuarios</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'motivo_formulario' %}">Motivos</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'buscar' %}">Búsqueda</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'leerterapias'%}">Mostrar info</a></li>
-                        {% endif %}
                        
                         {% if request.user.is_authenticated %}
 
                             <img src="{{request.user.imagen.imagen.url}}" alt="" style="height: 50px;width: 50px;">
                             <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     {{ request.user.username }}
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -84,7 +81,7 @@
             </div>
         </header>
 
-        {% block editable %}
+        {% block edit %}
 
 
 
@@ -93,131 +90,7 @@
     
         {%  endblock %}
 
-        <!-- About-->
-        <section class="about-section text-center" id="about">
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-8">
-                        <h2 class="text-white mb-4">Terapias Holísticas</h2>
-                        <p class="text-white-50">
-                            ¿Te sientes desequilibrado o buscas una forma más natural de cuidar de tu salud? 
-                            Las terapias holísticas te ofrecen una amplia gama de técnicas para relajarte, reducir el estrés, mejorar 
-                            tu sueño y encontrar tu bienestar interior. Al abordar las causas raíz de los problemas, estas terapias 
-                            te ayudan a alcanzar una salud más duradera y significativa.
-                        </p>
-                    </div>
-                </div>
-                <img class="img-fluid" src="{% static 'appenki/assets/img/buda_1.jpeg' %}" alt="..." />
-            </div>
-        </section>
-        <!-- Projects-->
-        <section class="projects-section bg-light" id="projects">
-            <div class="container px-4 px-lg-5">
-                <!-- Featured Project Row-->
-                <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
-                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="{% static 'appenki/assets/img/bg-masthead.jpg' %}" alt="..." /></div>
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="featured-text text-center text-lg-left">
-                            <h4>Shoreline</h4>
-                            <p class="text-black-50 mb-0">Grayscale is open source and MIT licensed. This means you can use it for any project - even commercial projects! Download it, customize it, and publish your website!</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project Cruz de Ankh-->
-                <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
-                    <div class="col-lg-6"><img class="img-fluid" src="{% static 'appenki/assets/img/ankh.jpeg' %}" alt="..." /></div>
-                    <div class="col-lg-6">
-                        <div class="bg-black text-center h-100 project">
-                            <div class="d-flex h-100">
-                                <div class="project-text w-100 my-auto text-center text-lg-left">
-                                    <h4 class="text-white">Cruz de Ankh</h4>
-                                    <p class="mb-0 text-white-50">Descubre el poder sanador de la Cruz de Ankh
-                                            La terapia con la Cruz de Ankh es una antigua práctica que utiliza el poderoso símbolo 
-                                            egipcio de la vida para promover el bienestar físico, emocional y espiritual. 
-                                            A través de técnicas de meditación, visualización y canalización energética, esta terapia te 
-                                            conecta con la energía universal y te ayuda a liberar bloqueos, encontrar la paz interior y alcanzar 
-                                            un estado de equilibrio completo.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project limpieza energética-->
-                <div class="row gx-0 justify-content-center">
-                    <div class="col-lg-6"><img class="img-fluid" src="{% static 'appenki/assets/img/limpieza.jpeg' %}" alt="..." /></div>
-                    <div class="col-lg-6 order-lg-first">
-                        <div class="bg-black text-center h-100 project">
-                            <div class="d-flex h-100">
-                                <div class="project-text w-100 my-auto text-center text-lg-right">
-                                    <h4 class="text-white">Limpieza energética</h4>
-                                    <p class="mb-0 text-white-50">Libera tu energía y encuentra tu equilibrio
-                                        ¿Sientes que cargas con un peso emocional? ¿Te encuentras cansado sin razón aparente? 
-                                        La terapia de limpieza energética puede ser la solución que buscas. 
-                                        A través de diversas técnicas, eliminamos las energías negativas acumuladas en tu aura 
-                                        y desbloqueamos tus canales energéticos, permitiéndote recuperar tu vitalidad y bienestar.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project Numerología Pitagórica-->
-                <div class="row gx-0 justify-content-center">
-                    <div class="col-lg-6"><img class="img-fluid" src="{% static 'appenki/assets/img/numerologia.jpeg' %}" alt="..." /></div>
-                    <div class="col-lg-6 order-lg-first">
-                        <div class="bg-black text-center h-100 project">
-                            <div class="d-flex h-100">
-                                <div class="project-text w-100 my-auto text-center text-lg-right">
-                                    <h5 class="text-white">Numerología Pitagórica</h5>
-                                    <p class="mb-0 text-white-50">Descubre tu camino de vida con la Numerología Pitagórica
-                                        La Numerología Pitagórica es una antigua ciencia que utiliza los números para desvelar
-                                         los aspectos más profundos de tu personalidad, talentos, desafíos y propósito de vida. 
-                                         A través de un análisis detallado de tu nombre y fecha de nacimiento, podrás comprender 
-                                         mejor quién eres y hacia dónde te diriges.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project Péndulo Hebreo-->
-                <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
-                    <div class="col-lg-6"><img class="img-fluid" src="{% static 'appenki/assets/img/pendulo.jpeg' %}" alt="..." /></div>
-                    <div class="col-lg-6">
-                        <div class="bg-black text-center h-100 project">
-                            <div class="d-flex h-100">
-                                <div class="project-text w-100 my-auto text-center text-lg-left">
-                                    <h6 class="text-white">Péndulo Hebreo</h6>
-                                    <p class="mb-0 text-white-50">Descubre el poder sanador del péndulo hebreo
-                                        La terapia de péndulo hebreo es una técnica de sanación energética que 
-                                        utiliza un péndulo radiestésico para detectar y eliminar energías negativas del cuerpo. 
-                                        A través de este método, se pueden identificar y tratar diversas disfunciones físicas, emocionales
-                                         y espirituales.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project Alineación y Limpieza de Chakras-->
-                <div class="row gx-0 justify-content-center">
-                    <div class="col-lg-6"><img class="img-fluid" src="{% static 'appenki/assets/img/chackras.jpeg' %}" alt="..." /></div>
-                    <div class="col-lg-6 order-lg-first">
-                        <div class="bg-black text-center h-100 project">
-                            <div class="d-flex h-100">
-                                <div class="project-text w-100 my-auto text-center text-lg-right">
-                                    <h7 class="text-white">Alineación y Limpieza de Chakras</h7>
-                                    <p class="mb-0 text-white-50">La alineación de chakras ofrece una amplia gama de beneficios, incluyendo:
-                                        Reducción del estrés y la ansiedad: Elimina bloqueos energéticos que causan tensión.
-                                        Aumento de la energía vital: Revitaliza tu cuerpo y espíritu.
-                                        Mejora del sueño: Favorece un descanso reparador.
-                                        Fortalecimiento del sistema inmunológico: Aumenta tus defensas naturales.
-                                        Mayor claridad mental: Mejora la concentración y la toma de decisiones.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+       
         <!-- Signup-->
         <section class="signup-section" id="signup">
             <div class="container px-4 px-lg-5">

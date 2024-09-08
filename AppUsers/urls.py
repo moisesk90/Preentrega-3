@@ -8,6 +8,7 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(template_name='AppEnki/padre.html'), name="logout"),
     path('editar/', views.editar_perfil, name="editar_perfil"),
     path('cambiar_pass', views.CambiarContrasena.as_view(), name="cambiar_pass"), 
+    path('welcome/', views.welcome, name='welcome'),
     
     
     

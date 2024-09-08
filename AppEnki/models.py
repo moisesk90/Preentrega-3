@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Terapias(models.Model):
     tipo_terapia = models.CharField(max_length=50)

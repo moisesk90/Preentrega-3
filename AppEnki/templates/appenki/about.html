@@ -1,6 +1,5 @@
 {% load static %}
 
-
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -30,11 +29,13 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="{% url 'inicio' %}">Inicio</a></li>
+                        {% if user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'terapias_formulario' %}">Terapias</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'usuarios_formulario' %}">Usuarios</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'motivo_formulario' %}">Motivos</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'buscar' %}">Búsqueda</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'leerterapias'%}">Mostrar info</a></li>
+                        {% endif %}
                        
                         {% if request.user.is_authenticated %}
 
@@ -52,11 +53,11 @@
                         {% else %}
 
                             <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     Cuenta
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item" href="{% url 'login' %}">Inciar Sesión</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'login' %}">Iniciar Sesión</a></li>
                                     <li><a class="dropdown-item" href="{% url 'registro' %}">Crear cuenta</a></li>
                                 </ul>
                             </div>
@@ -75,22 +76,47 @@
                     <div class="text-center">
                         <h1 class="mx-auto my-0 text-uppercase">Henko-Gaia</h1>
                         <h2 class="text-white-50 mx-auto mt-2 mb-5">Bienestar energético y emocional.</h2>
-                        <a class="btn btn-primary" href="#about">Empecemos</a>
+                        <a class="btn btn-primary" href="#about">Sobre esta página</a>
                     </div>
                 </div>
             </div>
         </header>
 
-        {% block editable %}
 
-
-
-
-
-    
-        {%  endblock %}
-
-       
+        <!-- About-->
+        <section class="about-section text-center" id="about">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-8">
+                        <h2 class="text-white mb-4">Acerca de Henko-Gaia: Tu Camino hacia el Equilibrio y Bienestar</h2>
+                        <p class="text-white-50">
+                            En Henko-Gaia, creemos en el poder de sanación integral que reside en cada individuo. 
+                            Nuestras terapias holísticas, inspiradas en antiguas tradiciones y respaldadas por la 
+                            sabiduría moderna, te guían hacia un estado de armonía y bienestar profundo.
+                        </p>
+                    </div>
+                </div>
+                <img class="img-fluid" src="{% static 'appenki/assets/img/buda-2.jpeg' %}" alt="..." />
+            </div>
+        </section>
+        <!-- Projects-->
+        <section class="projects-section bg-light" id="projects">
+            <div class="container px-4 px-lg-5">
+                <!-- Featured Project Row-->
+                <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
+                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="{% static 'appenki/assets/img/acercademi.jpg' %}" alt="..." /></div>
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="featured-text text-center text-lg-left">
+                            <h4>Acerca de mi y de este proyecto</h4>
+                            <p class="text-black-50 mb-0">Sobre mi, soy ingeniero en informática, mención redes, vivo en Santiago, Chile, quise estudiar python ya que donde trabajo es el lenguaje que mas se usa
+                                                        para crear automatizaciones, apis, que en el futuro ayuda mucho en los tiempos de respuestas y ayuda ahorrar tiempo con los procesos repetitivos.
+                                                        Esta página la hice por mi pareja que está estudiando terapias alternativas y se quiere dedicar a esto, una vez ya la haya mejorado y con mas tiempo le servirá para su publicidad.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <!-- Signup-->
         <section class="signup-section" id="signup">
             <div class="container px-4 px-lg-5">
@@ -190,3 +216,4 @@
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
 </html>
+            
