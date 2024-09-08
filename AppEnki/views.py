@@ -2,19 +2,26 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from AppEnki.models import Terapias, Registro_usuario, motivo_terapia
 from AppEnki.forms import FormularioTerapias, FormularioUsuarios, FormularioMotivo
+from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
 
 def inicio (request):
     return render(request, 'appenki/padre.html')
 
+@login_required
 def terapias(request):
     return render(request, 'appenki/terapias.html')
 
+@login_required
 def usuarios(request):
     return render(request, 'appenki/usuarios.html')
 
+@login_required
 def motivos(request):
     return render(request, 'appenki/motivos.html')
 
+@login_required
 def terapias_formulario(request):
     if request.method == 'POST':
         miformulario = FormularioTerapias(request.POST)
@@ -29,6 +36,7 @@ def terapias_formulario(request):
         
     return render(request, "AppEnki/terapias_formulario.html", {"miformulario": miformulario})
 
+@login_required
 def usuarios_formulario(request):
     if request.method == 'POST':
         miformulario = FormularioUsuarios(request.POST)
@@ -43,6 +51,7 @@ def usuarios_formulario(request):
         
     return render(request, "AppEnki/usuario_formulario.html", {"miformulario": miformulario})
 
+@login_required
 def motivo_formulario(request):
     if request.method == 'POST':
         miformulario = FormularioMotivo(request.POST)
@@ -58,6 +67,7 @@ def motivo_formulario(request):
     return render(request, "AppEnki/motivo_formulario.html", {"miformulario": miformulario})
 
 
+@login_required
 def buscar(request):
     if request.method == 'POST':
         busqueda = request.POST['buscar']
@@ -68,3 +78,17 @@ def buscar(request):
     else:
         return render(request, "AppEnki/buscar.html")
 
+@login_required
+def leerterapias(request):
+    terapia = Terapias.objects.all()
+    contexto = {"terapia":terapia}
+    return render(request, "AppEnki/leerterapias.html", contexto)
+
+@login_required
+def eliminarterapias(request, nombre_terapia):
+    terapia = Terapias.objects.get(tipo_terapia=nombre_terapia)
+    terapia.delete()
+    
+    terapias = Terapias.objects.all()
+    contexto = {"terapias": terapias}
+    return render(request, "Appenki/leerterapias.html", contexto)
