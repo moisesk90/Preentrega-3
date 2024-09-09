@@ -2,6 +2,7 @@ Credenciales base de datos.
 Usuario: moises
 Contraseña: moises1990..
 Enlace Google Drive del video: https://drive.google.com/drive/folders/1hbddNmEZfLyPbDqoRfBfiV5P3bSy1bmL?usp=sharing
+Enlace planilla casos de prueba: https://docs.google.com/spreadsheets/d/1M7hG-O8sln4LgbYoBFZR9tBOVJHiXxGu/edit?usp=sharing&ouid=103515559237714848084&rtpof=true&sd=true
 
 La idea de esta página es poder informar y ofrecer a los usuarios terapias alternativas como reiki, limpieza de chackras, lectura de tarot, corte de lazos energéticos, etc. Esto se me ocurrió por mi pareja que está haciendo estos tipos de cursos y poder promocionarlo no solo por instagram.
 
